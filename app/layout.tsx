@@ -7,8 +7,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import Topbar from "./(component)/topbar/index";
-import Sidebar from "./(component)/sidebar/index";
+import Topbar from "./(component)/topbar/topbarIndex";
+import Sidebar from "./(component)/sidebar/sidebarIndex";
 
 const inter = Inter({ subsets: ["latin"] });
 

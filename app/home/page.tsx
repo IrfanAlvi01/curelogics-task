@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import ProductList from "../(component)/ProductList";
 import { ProductProps } from "../utils/interfaces";
 import { tempData } from "../utils/tempData";
+import CustomCard from "../(component)/card/cardIndex";
+import { Box } from "@mui/material";
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<ProductProps[]>(tempData);
@@ -14,7 +15,7 @@ const Home: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://sore-puce-butterfly-cap.cyclic.app/products"
+          "api/products"
         );
         const data = await response.json();
         setProducts(data);
@@ -24,7 +25,7 @@ const Home: React.FC = () => {
       }
     };
     // Api isnt working atm.
-    // fetchData();
+    fetchData();
   }, []);
 
   // Handle favorite toggle
@@ -37,14 +38,15 @@ const Home: React.FC = () => {
   // Implement search, filter, and sort functionalities here
 
   return (
-    <div className="app">
-      {/* Add search, filter, and sort components here */}
-
-      <ProductList
-        products={filteredProducts}
-        // onFavoriteToggle={handleFavoriteToggle}
-      />
-    </div>
+    <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"}>
+      {filteredProducts.map((product, index) => (
+        <CustomCard
+          key={index}
+          {...product}
+          // onFavoriteToggle={() => onFavoriteToggle(index)}
+        />
+      ))}
+    </Box>
   );
 };
 
