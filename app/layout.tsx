@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 
 import Topbar from "./(component)/topbar/topbarIndex";
 import Sidebar from "./(component)/sidebar/sidebarIndex";
+import { ReduxProvider } from "@/redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           <Sidebar />
           <Box component="main" flexGrow={1} padding={3}>
             <Toolbar />
-            {children}
+            <ReduxProvider>{children}</ReduxProvider>
             <Typography paragraph>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
