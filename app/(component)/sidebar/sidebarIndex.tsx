@@ -28,7 +28,7 @@ const index = () => {
         },
       }}
     >
-      <Toolbar />
+      <Toolbar sx={{height: 80}} />
       <Box sx={{ overflow: "auto" }}>
         <List>
           {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (

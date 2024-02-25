@@ -12,7 +12,7 @@ import {
 import StarIcon from "@mui/icons-material/Star";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { ProductProps } from "@/app/utils/interfaces";
+import { ProductProps } from "@/app/(utils)/interfaces";
 
 const CustomCard: React.FC<ProductProps> = ({
   productName,
