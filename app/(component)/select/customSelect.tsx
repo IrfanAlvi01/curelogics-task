@@ -21,12 +21,12 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   list,
   keyName,
 }) => {
-  const { topbarState, updateState } = useTopbarState();
+  const { topbarState, updateTopbarState } = useTopbarState();
 
   const handleSelect = (e: SelectChangeEvent<unknown>) => {
     const value = e.target.value;
     console.log(value);
-    updateState(keyName, value as string);
+    updateTopbarState(keyName, value as string);
   };
 
   return (

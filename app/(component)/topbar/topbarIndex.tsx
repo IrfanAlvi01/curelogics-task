@@ -5,13 +5,13 @@ import { AppBar, TextField, Toolbar, Typography } from "@mui/material";
 import CustomSelect from "../select/customSelect";
 
 const Topbar = () => {
-  const { topbarState, updateState } = useTopbarState();
+  const { topbarState, updateTopbarState } = useTopbarState();
 
   const handleSearch = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const value = e.target.value;
-    updateState("searchTerm", value);
+    updateTopbarState("searchTerm", value);
   };
 
   return (

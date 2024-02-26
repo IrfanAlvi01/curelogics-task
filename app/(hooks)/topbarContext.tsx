@@ -20,7 +20,7 @@ interface TopbarState {
 
 interface TopbarContextProps {
   topbarState: TopbarState;
-  updateState: (field: string, term: string | string[]) => void;
+  updateTopbarState: (field: string, term: string | string[]) => void;
   // Add other methods to update state as needed
 }
 
@@ -60,7 +60,7 @@ export const TopbarProvider: React.FC<{ children: ReactNode }> = ({
     }
   }, [productList]);
 
-  const updateState = (field: string, term: string | string[]) => {
+  const updateTopbarState = (field: string, term: string | string[]) => {
     setTopbarState((prevState) => ({
       ...prevState,
       [field]: term,
@@ -70,7 +70,7 @@ export const TopbarProvider: React.FC<{ children: ReactNode }> = ({
   // Add other methods to update state
 
   return (
-    <TopbarContext.Provider value={{ topbarState, updateState }}>
+    <TopbarContext.Provider value={{ topbarState, updateTopbarState }}>
       {children}
     </TopbarContext.Provider>
   );

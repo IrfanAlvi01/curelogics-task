@@ -12,11 +12,10 @@ export interface ProductProps {
     name: string;
     country: string;
   };
-  // onFavoriteToggle: () => void;
+  onFavoriteToggle?: () => void;
 }
 
 export interface ProductListProps {
   products: ProductProps[];
   // onFavoriteToggle: (index: number) => void;
 }
-

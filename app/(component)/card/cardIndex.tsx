@@ -7,6 +7,7 @@ import {
   CardMedia,
   IconButton,
   Rating,
+  Stack,
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
@@ -20,9 +21,10 @@ const CustomCard: React.FC<ProductProps> = ({
   price,
   rating,
   imageUrl,
+  favorite,
   description,
   brand,
-  //   onFavoriteToggle,
+  onFavoriteToggle,
 }) => {
   return (
     <Card sx={{ maxWidth: 260, margin: 1, minWidth: 250 }}>
@@ -34,29 +36,49 @@ const CustomCard: React.FC<ProductProps> = ({
         alt="Paella dish"
       />
       <CardContent>
-        <Rating
-          size="small"
-          name="rating"
-          value={rating}
-          readOnly
-          precision={0.1}
-          emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-        />
-        <Typography gutterBottom variant="h6" component="div">
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Rating
+            size="small"
+            name="rating"
+            value={rating}
+            readOnly
+            precision={0.1}
+            emptyIcon={
+              <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+            }
+          />
+          <IconButton aria-label="add to favorites" onClick={onFavoriteToggle}>
+            <FavoriteIcon color={favorite == true ? "error" : "disabled"} />
+          </IconButton>
+        </Stack>
+        <Typography gutterBottom variant="h6" component="div" noWrap>
           {productName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {description?.slice(0, 50).concat("...")}
         </Typography>
+        <Stack mt={2} direction="row" gap={1}>
+          <Typography variant="body2">Category:</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {category}
+          </Typography>
+        </Stack>
+        <Stack direction="row" gap={1}>
+          <Typography variant="body2">Brand:</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {brand?.name}
+          </Typography>
+        </Stack>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+      {/* <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites" onClick={onFavoriteToggle}>
+          <FavoriteIcon color={favorite == true ? "error" : "disabled"} />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };
