@@ -15,13 +15,11 @@ interface TopbarState {
   selectedCategory: string;
   brands: string[];
   selectedBrand: string;
-  // Add other state properties as needed
 }
 
 interface TopbarContextProps {
   topbarState: TopbarState;
   updateTopbarState: (field: string, term: string | string[]) => void;
-  // Add other methods to update state as needed
 }
 
 const TopbarContext = createContext<TopbarContextProps | undefined>(undefined);
@@ -36,7 +34,6 @@ export const TopbarProvider: React.FC<{ children: ReactNode }> = ({
     selectedCategory: "all",
     brands: [],
     selectedBrand: "all",
-    // Initialize other state properties
   });
   const productList = useAppSelecter(
     (state) => state.productReducer.productList
@@ -66,8 +63,6 @@ export const TopbarProvider: React.FC<{ children: ReactNode }> = ({
       [field]: term,
     }));
   };
-
-  // Add other methods to update state
 
   return (
     <TopbarContext.Provider value={{ topbarState, updateTopbarState }}>

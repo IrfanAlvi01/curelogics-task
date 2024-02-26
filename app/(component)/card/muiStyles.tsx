@@ -8,9 +8,10 @@ export const textfieldStyle = {
     fontFamily: "Poppins",
   },
   "& .MuiOutlinedInput-root": {
+    marginBottom: "10px",
     "& fieldset": {
       fontFamily: "Poppins",
-      borderColor: "#9B9B9B",
+      borderColor: "#EDEDED",
       borderRadius: 3,
     },
     "& label": {},

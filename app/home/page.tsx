@@ -1,13 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ProductProps } from "../(utils)/interfaces";
-import { tempData } from "../(utils)/tempData";
-import CustomCard from "../(component)/card/cardIndex";
 import { Box } from "@mui/material";
+import { tempData } from "../(utils)/tempData";
+import { ProductProps } from "../(utils)/interfaces";
+import CustomCard from "../(component)/card/cardIndex";
 import { useAppDispatch, useAppSelecter } from "@/redux/store";
 import { getProductList } from "@/redux/features/product-slice";
 import { useTopbarState } from "../(hooks)/topbarContext";
 import { useSidebarState } from "../(hooks)/sidebarContext";
+import CustomCardSkeleton from "../(component)/card/cardSkeleton";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -16,8 +17,8 @@ const Home: React.FC = () => {
   const productList = useAppSelecter(
     (state) => state.productReducer.productList
   );
-  // const [products, setProducts] = useState<ProductProps[]>(tempData);
   const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Fetch products from API
   useEffect(() => {
@@ -61,7 +62,7 @@ const Home: React.FC = () => {
 
         return flag;
       });
-
+      if (loading) setLoading(false);
       setFilteredProducts(filteredList);
     }
   }, [topbarState, sidebarState, productList]);
@@ -75,13 +76,17 @@ const Home: React.FC = () => {
   return (
     <>
       <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"}>
-        {filteredProducts?.map((product, index) => (
-          <CustomCard
-            key={index}
-            {...product}
-            onFavoriteToggle={() => handleFavoriteToggle(index)}
-          />
-        ))}
+        {loading
+          ? Array.from({ length: 8 }).map((val, idx) => (
+              <CustomCardSkeleton key={idx} />
+            ))
+          : filteredProducts?.map((product, index) => (
+              <CustomCard
+                key={index}
+                {...product}
+                onFavoriteToggle={() => handleFavoriteToggle(index)}
+              />
+            ))}
       </Box>
     </>
   );

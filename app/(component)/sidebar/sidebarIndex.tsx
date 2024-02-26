@@ -13,8 +13,10 @@ import {
 } from "@mui/material";
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+
 import { useSidebarState } from "@/app/(hooks)/sidebarContext";
-import { drawerStyle } from "./muiStyles";
+
+import { drawerStyle, textfieldStyle } from "./muiStyles";
 
 const Sidebar = () => {
   const { sidebarState, updateSidebarState } = useSidebarState();
@@ -67,11 +69,23 @@ const Sidebar = () => {
 
   return (
     <Drawer variant="permanent" sx={drawerStyle}>
-      <Toolbar sx={{ height: 80, mb: 2 }} />
-      <Typography variant="h6" fontWeight="bold" mt={2} px={2}>
+      <Toolbar sx={{ height: 80, mb: 1 }} />
+      <Typography
+        variant="h6"
+        fontFamily="Poppins"
+        fontWeight="bold"
+        mt={2}
+        px={2}
+      >
         Filters
       </Typography>
-      <Typography fontSize={16} fontWeight="bold" mt={1} px={2}>
+      <Typography
+        fontSize={16}
+        fontFamily="Poppins"
+        fontWeight="bold"
+        mt={1}
+        px={2}
+      >
         Price:
       </Typography>
       <Box
@@ -88,6 +102,7 @@ const Sidebar = () => {
           label="Min"
           name="minPrice"
           variant="outlined"
+          sx={textfieldStyle}
           value={localState?.minPrice}
           onChange={(e) => handlePriceChange(e)}
           InputProps={{ inputProps: { min: 0, max: 99999 } }}
@@ -100,17 +115,24 @@ const Sidebar = () => {
           label="Max"
           name="maxPrice"
           variant="outlined"
+          sx={textfieldStyle}
           value={localState?.maxPrice}
           onChange={(e) => handlePriceChange(e)}
           InputProps={{ inputProps: { min: 0, max: 99999 } }}
         />
       </Box>
-      <Typography fontSize={16} fontWeight="bold" mt={1} paddingX={2}>
+      <Typography
+        fontSize={16}
+        fontFamily="Poppins"
+        fontWeight="bold"
+        mt={1}
+        paddingX={2}
+      >
         Rating:
       </Typography>
       <Box paddingX={2}>
         <Stack direction="row" alignItems="center">
-          <Typography mr={1} fontSize={14} gutterBottom>
+          <Typography mr={1} fontFamily="Poppins" fontSize={14} gutterBottom>
             Min:
           </Typography>
           <Slider
@@ -126,7 +148,7 @@ const Sidebar = () => {
           />
         </Stack>
         <Stack direction="row" alignItems="center">
-          <Typography mr={1} fontSize={14} gutterBottom>
+          <Typography mr={1} fontFamily="Poppins" fontSize={14} gutterBottom>
             Max:
           </Typography>
           <Slider
@@ -148,7 +170,14 @@ const Sidebar = () => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Typography fontWeight="bold" mt={1} mr={1} fontSize={14} gutterBottom>
+        <Typography
+          fontFamily="Poppins"
+          fontWeight="bold"
+          mt={1}
+          mr={1}
+          fontSize={14}
+          gutterBottom
+        >
           Favourite:
         </Typography>
         <Checkbox
@@ -160,45 +189,22 @@ const Sidebar = () => {
         />
       </Stack>
       <Box px={2} mt={2} gap={1} display={"flex"} justifyContent={"center"}>
-        <Button variant="outlined" onClick={() => handleClear()}>
-          Clear
+        <Button
+          variant="outlined"
+          sx={{ borderRadius: 2 }}
+          onClick={() => handleClear()}
+        >
+          <Typography fontFamily="Poppins">Clear</Typography>
         </Button>
         <Button
-          variant="contained"
           disableElevation
+          variant="contained"
+          sx={{ borderRadius: 2 }}
           onClick={() => handleApply()}
         >
-          Apply
+          <Typography fontFamily="Poppins">Apply</Typography>
         </Button>
       </Box>
-
-      {/* <Box sx={{ overflow: "auto" }}>
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Box> */}
     </Drawer>
   );
 };

@@ -11,7 +11,6 @@ import {
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { ProductProps } from "@/app/(utils)/interfaces";
 
@@ -62,6 +61,12 @@ const CustomCard: React.FC<ProductProps> = ({
           {description?.slice(0, 50).concat("...")}
         </Typography>
         <Stack mt={2} direction="row" gap={1}>
+          <Typography variant="body2">Price:</Typography>
+          <Typography variant="body2" color="Highlight">
+            {price}$
+          </Typography>
+        </Stack>
+        <Stack direction="row" gap={1}>
           <Typography variant="body2">Category:</Typography>
           <Typography variant="body2" color="text.secondary">
             {category}
@@ -74,11 +79,6 @@ const CustomCard: React.FC<ProductProps> = ({
           </Typography>
         </Stack>
       </CardContent>
-      {/* <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={onFavoriteToggle}>
-          <FavoriteIcon color={favorite == true ? "error" : "disabled"} />
-        </IconButton>
-      </CardActions> */}
     </Card>
   );
 };

@@ -35,6 +35,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       <Select
         name={label}
         label={label}
+        size="small"
         sx={dropdownSelect}
         onChange={(e) => handleSelect(e)}
         value={topbarState[keyName]}

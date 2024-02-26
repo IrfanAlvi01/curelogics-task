@@ -1,6 +1,4 @@
 export const dropdownSelect = {
-  //   mb: "10px",
-  // width: "500px",
   minWidth: "250px",
   borderRadius: 3,
   color: "#9B9B9B",
@@ -21,7 +19,33 @@ export const drawerStyle = {
   flexShrink: 0,
   [`& .MuiDrawer-paper`]: {
     width: 240,
-    boxSizing: "border-box",
     overflowX: "hidden",
+    boxSizing: "border-box",
+    backgroundColor: "whitesmoke",
+  },
+};
+
+export const textfieldStyle = {
+  input: {
+    color: "primary.fontColor",
+    fontFamily: "Poppins",
+  },
+  label: {
+    color: "primary.fontColor",
+    fontFamily: "Poppins",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      fontFamily: "Poppins",
+      borderColor: "#9B9B9B",
+      borderRadius: 3,
+    },
+    "& label": {},
+    "&:hover fieldset": {
+      borderColor: "#7D8EA3",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#7D8EA3",
+    },
   },
 };

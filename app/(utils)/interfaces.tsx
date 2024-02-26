@@ -13,6 +13,7 @@ export interface ProductProps {
     country: string;
   };
   onFavoriteToggle?: () => void;
+  loading?: boolean;
 }
 
 export interface ProductListProps {

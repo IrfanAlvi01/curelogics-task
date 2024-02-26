@@ -1,7 +1,6 @@
 export const dropdownSelect = {
-  //   mb: "10px",
-  // width: "500px",
-  minWidth: "250px",
+  width: "200px",
+  minWidth: "150px",
   borderRadius: 3,
   color: "#9B9B9B",
   textAlign: "left",
