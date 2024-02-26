@@ -9,6 +9,7 @@ import {
 } from "react";
 
 interface TopbarState {
+  [key: string]: string | string[];
   searchTerm: string;
   searchField2: string;
   categories: string[];
