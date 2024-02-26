@@ -37,8 +37,12 @@ const Sidebar = () => {
     setLocalState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRatingChange = (event: Event, value: number | number[]) => {
-    const name = event.target?.name;
+  const handleRatingChange = (
+    _: Event,
+    value: number | number[],
+    name: string
+  ) => {
+    // const name = event.target?.name;
 
     setLocalState((prev) => ({ ...prev, [name]: value }));
   };
@@ -138,7 +142,7 @@ const Sidebar = () => {
           <Slider
             name="minRating"
             value={localState?.minRating || 0}
-            onChange={handleRatingChange}
+            onChange={(_, value) => handleRatingChange(_, value, "minRating")}
             defaultValue={1}
             valueLabelDisplay="auto"
             shiftStep={0.1}
@@ -154,7 +158,7 @@ const Sidebar = () => {
           <Slider
             name="maxRating"
             value={localState?.maxRating || 0}
-            onChange={handleRatingChange}
+            onChange={(_, value) => handleRatingChange(_, value, "maxRating")}
             defaultValue={5}
             valueLabelDisplay="auto"
             shiftStep={0.1}
