@@ -62,8 +62,11 @@ const Home: React.FC = () => {
 
         return flag;
       });
-      if (loading) setLoading(false);
       setFilteredProducts(filteredList);
+      if (loading)
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
     }
   }, [topbarState, sidebarState, productList]);
 
