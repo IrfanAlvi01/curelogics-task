@@ -25,7 +25,7 @@ const initialState = {
 };
 
 export const slice = createSlice({
-  name: "auth",
+  name: "products",
   initialState,
   reducers: {
     logOut: () => {
