@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { tempData } from "../(utils)/tempData";
 import { ProductProps } from "../(utils)/interfaces";
 import CustomCard from "../(component)/card/cardIndex";
@@ -76,17 +76,30 @@ const Home: React.FC = () => {
   return (
     <>
       <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-evenly"}>
-        {loading
-          ? Array.from({ length: 8 }).map((val, idx) => (
-              <CustomCardSkeleton key={idx} />
-            ))
-          : filteredProducts?.map((product, index) => (
-              <CustomCard
-                key={index}
-                {...product}
-                onFavoriteToggle={() => handleFavoriteToggle(index)}
-              />
-            ))}
+        {loading ? (
+          Array.from({ length: 8 }).map((val, idx) => (
+            <CustomCardSkeleton key={idx} />
+          ))
+        ) : filteredProducts?.length >= 1 ? (
+          filteredProducts?.map((product, index) => (
+            <CustomCard
+              key={index}
+              {...product}
+              onFavoriteToggle={() => handleFavoriteToggle(index)}
+            />
+          ))
+        ) : (
+          <Stack mt={4} width="100%" direction="row" justifyContent="center">
+            <Typography
+              fontFamily="Poppins"
+              fontWeight="bold"
+              fontSize={14}
+              gutterBottom
+            >
+              No Products Available
+            </Typography>
+          </Stack>
+        )}
       </Box>
     </>
   );
